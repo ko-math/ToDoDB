@@ -9,8 +9,12 @@ async function login(u,p){
   }
   const r = await fetch(GAS,{
     method: 'POST',
-    body: JSON.stringify(payload);
-  }
-  return await r.text();
+    body: JSON.stringify(payload)
+  });
+  const res = await r.text();
+  return JSON.parse(res);
 }
-alert(login('test_user0','auth'));
+
+login('test_user0','auth0').then(r=>{
+  window.alert(r);
+});
