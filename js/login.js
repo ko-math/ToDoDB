@@ -1,5 +1,5 @@
 const $d = document;
-import * from './js/gas.js';
+import {login} from './js/gas.js';
 //login
 const div = $d.querySelector('#login');
 const form = $d.createElement('form');
@@ -15,7 +15,7 @@ form.innerHTML = `
       <label for="form_password">パスワード</label>
       <input id="form_password" type="password">
     </div>
-    <button id="form_submit">送信</button>
+    <input id="form_submit" type="submit" value="送信">
   </fieldset>
 `;
 div.append(form);
