@@ -5,11 +5,16 @@ const form = $d.createElement('form');
 form.classList.add('login_form');
 form.innerHTML = `
   <fieldset>
-    <label for="form_username">ユーザー名</label>
-    <input id="form_username" type="text">
-
-    <label for="form_password">パスワード</label>
-    <input id="form_password" type="text">
+    <legend>ログイン</legend>
+    <div>
+      <label for="form_username">ユーザー名</label>
+      <input id="form_username" type="text">
+    </div>
+    <div>
+      <label for="form_password">パスワード</label>
+      <input id="form_password" type="text">
+    </div>
+    <button id="form_submit">送信</button>
   </fieldset>
 `;
 div.append(form);
