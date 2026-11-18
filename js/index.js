@@ -5,5 +5,9 @@ async function(u,p){
       password:p
     }
   }
-  const r = await fetch('',JSON.parse(payload)); 
+  const r = await fetch('',{
+    "method": "POST",
+    "type": "login",
+    "body": JSON.parse(payload)
+  }
 }
