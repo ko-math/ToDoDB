@@ -1,4 +1,5 @@
 const $d = document;
+import * from './js/gas.js';
 //login
 const div = $d.querySelector('#login');
 const form = $d.createElement('form');
@@ -12,9 +13,17 @@ form.innerHTML = `
     </div>
     <div>
       <label for="form_password">パスワード</label>
-      <input id="form_password" type="text">
+      <input id="form_password" type="password">
     </div>
     <button id="form_submit">送信</button>
   </fieldset>
 `;
 div.append(form);
+const b = $d.querySelector('#form_submit');
+b.addEventListener('click',async ()=>{
+  const u = $d.querySelector('#form_username');
+  const p = $d.querySelector('#form_password');
+  const r = await login(u.value,p.value);
+  const res = await r.text();
+  window.alert(res);
+});
