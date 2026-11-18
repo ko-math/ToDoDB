@@ -2,7 +2,7 @@ const GAS = 'https://script.google.com/macros/s/AKfycbzA8YzHoaKsuZiNi7Jjk-8rTqsp
 const username = 'ko';
 const password = '0';
 login(username,password).then(r=>{
-  window.alert(r);
+  window.alert(JSON.stringify(r));
 });
 async function login(u,p){
   const pass = await hash(p);
