@@ -1,4 +1,4 @@
-import {login} from './js/gas.js';
+import {login} from './gas.js';
 const $d = document;
 //login
 const div = $d.querySelector('#login');
