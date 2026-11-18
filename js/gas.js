@@ -1,4 +1,4 @@
-const GAS = 'https://script.google.com/macros/s/AKfycbx-logAKDFsk3oDlCe6B8VAqj1Bu-ZQxA3-DLEJBlSL--P8RSLfeb9chup8xHa_ICtM5w/exec';
+const GAS = 'https://script.google.com/macros/s/AKfycbwMJC0qU3KyT3KtBtFIlkM5WZtIHGCoi0qcm8NWiXaqZ5BXBD3-Nwd4a7Il86TWzRDsug/exec';
 async function login(u,p){
   const pass = await hash(p);
   const payload = {
