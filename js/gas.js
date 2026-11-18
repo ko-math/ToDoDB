@@ -1,13 +1,4 @@
 const GAS = 'https://script.google.com/macros/s/AKfycbx-logAKDFsk3oDlCe6B8VAqj1Bu-ZQxA3-DLEJBlSL--P8RSLfeb9chup8xHa_ICtM5w/exec';
-const username = 'test0';
-const password = 'test0';
-register(username,password).then(r=>{
-  window.alert(JSON.stringify(r));
-});
-
-login(username,password).then(r=>{
-  window.alert(JSON.stringify(r));
-});
 async function login(u,p){
   const pass = await hash(p);
   const payload = {
@@ -48,3 +39,5 @@ async function hash(text){
   const hash = ha.map(b => b.toString(16).padStart(2,'0')).join('');  
   return hash;
 }
+
+export {login,register};
