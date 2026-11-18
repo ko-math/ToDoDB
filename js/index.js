@@ -1,4 +1,4 @@
-const GAS = 'https://script.google.com/macros/s/AKfycbyc30YTAkKXKEyItfWNIB9YH8df2I3GPU5CKSii4h6Wu_nNf8YkQNyQyXL4wrCwSIBG4g/exec';
+const GAS = 'https://script.google.com/macros/s/AKfycbx-logAKDFsk3oDlCe6B8VAqj1Bu-ZQxA3-DLEJBlSL--P8RSLfeb9chup8xHa_ICtM5w/exec';
 const username = 'test0';
 const password = 'test0';
 register(username,password).then(r=>{
