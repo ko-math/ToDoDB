@@ -1,28 +1,12 @@
 const GAS = 'https://script.google.com/macros/s/AKfycbwMJC0qU3KyT3KtBtFIlkM5WZtIHGCoi0qcm8NWiXaqZ5BXBD3-Nwd4a7Il86TWzRDsug/exec';
-async function login(u,p){
-  const user = await hash(u);
-  const pass = await hash(p);
+async function POST0(t,username,password){
+  const u = await hash(username);
+  const p = await hash(password);
   const payload = {
-    type: 'login',
-    info:{
-      username:user,
-      password:pass
-    }
-  }
-  const r = await fetch(GAS,{
-    method: 'POST',
-    body: JSON.stringify(payload)
-  });
-  const res = await r.text();
-  return JSON.parse(res);
-}
-async function register(u,p){
-  const pass = await hash(p);
-  const payload = {
-    type: 'register',
+    type: t,
     info:{
       username:u,
-      password:pass
+      password:p
     }
   }
   const r = await fetch(GAS,{
@@ -41,4 +25,4 @@ async function hash(text){
   return hash;
 }
 
-export {login,register};
+export {POST0};
