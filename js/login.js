@@ -1,4 +1,4 @@
-import {login,register} from './gas.js';
+import {POST0} from './gas.js';
 const $d = document;
 //login
 const div = $d.querySelector('#login');
@@ -23,7 +23,7 @@ const b = $d.querySelector('#form_submit');
 b.addEventListener('click',async ()=>{
   const u = $d.querySelector('#form_username');
   const p = $d.querySelector('#form_password');
-  const r = await login(u.value,p.value);
+  const r = await POST0('login',u.value,p.value);
   const res = r;
   console.log(res);
 });
