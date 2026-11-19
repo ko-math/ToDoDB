@@ -24,6 +24,6 @@ b.addEventListener('click',async ()=>{
   const u = $d.querySelector('#form_username');
   const p = $d.querySelector('#form_password');
   const r = await login(u.value,p.value);
-  const res = await r.text();
+  const res = r;
   console.log(res);
 });
