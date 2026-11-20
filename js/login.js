@@ -7,8 +7,8 @@ const div = $d.querySelector('#login');
   const form = $d.createElement('form');
   form.id = 'login_register';
   form.innerHTML = `
-      <input name="type_login" type="radio" value="login" checked>
-      <input name="type_login" type="radio" value="register">
+      <label><input name="type_login" type="radio" value="login" checked>login</label>
+      <label><input name="type_login" type="radio" value="register">register</label>
   `;
   div.append(form);
 })();
@@ -18,13 +18,13 @@ const div = $d.querySelector('#login');
   form.id = 'login_form';
   form.innerHTML = `
     <fieldset>
-      <legend>ログイン</legend>
+      <legend>login</legend>
       <div>
-        <label for="form_username">ユーザー名</label>
+        <label for="form_username">Username</label>
         <input id="form_username" type="text">
       </div>
       <div>
-        <label for="form_password">パスワード</label>
+        <label for="form_password">Password</label>
         <input id="form_password" type="password">
       </div>
       <input id="form_submit" type="button" value="送信">
@@ -44,5 +44,6 @@ b.addEventListener('click',async ()=>{
 const c = $d.querySelectorAll('input[name="type_login"]').forEach((r)=>{
   r.addEventListener('change',(e)=>{
     type = e.target.value;
+    $d.querySelector('#login_form fieldset legend').textContent = type;
   });
 });
