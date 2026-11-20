@@ -1,4 +1,4 @@
-const GAS = 'https://script.google.com/macros/s/AKfycbzTi-LQRy7tvZiojm_pE1xo9JIHka7-kcyVUe3W9CY-J3ZKJFStYoYG5Ogk16hYT9kzYg/exec';
+const GAS = 'https://script.google.com/macros/s/AKfycbx_WYDVqskZisFwyjyEMpv8gGz1VfWlrOh2wQOCLO4N1geJgZNie7qZBx5sUml0MyOKBg/exec';
 async function POST0(t,username,password){
   const u = await hash(username);
   const p = await hash(password);
