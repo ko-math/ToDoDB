@@ -1,7 +1,7 @@
 import * as gasLib from './gas.js';
 const $d = document;
 let type = 'login';
-export let LOGIN_RESPONCE = 'INIT';
+export let LOGIN_RESPONSE = 'INIT';
 //login
 const div = $d.querySelector('#login');
 (()=>{
