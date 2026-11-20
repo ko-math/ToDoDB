@@ -34,14 +34,8 @@ async function GET(t,username,password){
     window.alert('パスワードが確認できませんでした。');
     location.href = '../index.html';
   }
-  payload = {
-    type: 'getData',
-    info:{
-      username:u
-    }
-  }
   r = await fetch(GAS,{
-    method: 'GET',
+    method: 'POST',
     body: JSON.stringify(payload)
   });
   const arr = r.split(':');
