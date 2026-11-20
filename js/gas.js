@@ -1,4 +1,4 @@
-const GAS = 'https://script.google.com/macros/s/AKfycbwM7mtFpKT95Em7OlsmhF1bJ_dPJfAjgh6Ph5hGJB2IWUXmJOua-5xhk2OpVAdEOhdpVw/exec';
+const GAS = 'https://script.google.com/macros/s/AKfycbwyAIulJPxIW6E_uys5QLop3wIca9pXjAwXJyRvE17y4ibwuL03BSjLKlQAbf8zWgwqHg/exec';
 async function POST(t,username,password){
   const u = await hash(username);
   const p = await hash(password);
@@ -23,6 +23,7 @@ async function GET(t,username,password){
   let payload = {
     type: 'login',
     info:{
+      u:username,
       username:u,
       password:p
     }
