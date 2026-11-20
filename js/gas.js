@@ -5,6 +5,7 @@ async function POST(t,username,password){
   const payload = {
     type: t,
     info:{
+      u:username,
       username:u,
       password:p
     }
