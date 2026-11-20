@@ -1,59 +1,70 @@
 const GAS = 'https://script.google.com/macros/s/AKfycbwyAIulJPxIW6E_uys5QLop3wIca9pXjAwXJyRvE17y4ibwuL03BSjLKlQAbf8zWgwqHg/exec';
-async function POST(t,username,password){
+
+export async function POST(t, username, password) {
   const u = await hash(username);
   const p = await hash(password);
   const payload = {
     type: t,
-    info:{
-      u:username,
-      username:u,
-      password:p
+    info: {
+      u: username,
+      username: u,
+      password: p
     }
-  }
-  const r = await fetch(GAS,{
+  };
+  const r = await fetch(GAS, {
     method: 'POST',
     body: JSON.stringify(payload)
   });
-  return JSON.parse(r);
+  // ResponseオブジェクトからJSONを取り出す
+  return await r.json();
 }
 
-async function GET(t,username,password){
+export async function GET(t, username, password) {
   const u = await hash(username);
   const p = await hash(password);
+  
+  // 1. ログイン確認
   let payload = {
     type: 'login',
-    info:{
-      u:username,
-      username:u,
-      password:p
+    info: {
+      u: username,
+      username: u,
+      password: p
     }
-  }
-  let r = await fetch(GAS,{
+  };
+  let r = await fetch(GAS, {
     method: 'POST',
     body: JSON.stringify(payload)
   });
-  if(!r.ok){
+  const loginRes = await r.json();
+
+  if (!loginRes.ok) {
     window.alert('パスワードが確認できませんでした。');
     location.href = '../index.html';
+    return null;
   }
-  r = await fetch(GAS,{
+
+  // 2. データ取得（typeを 'getData' に変更）
+  payload = {
+    type: 'getData',
+    info: {
+      u: username,
+      username: u
+    }
+  };
+  r = await fetch(GAS, {
     method: 'POST',
     body: JSON.stringify(payload)
   });
-  const arr = r.split(':');
-  const data = [];
-  arr.forEach((e)=>{
-    data.push(e.split(','));
-  });
-  window.alert(data);
-}
+  const dataRes = await r.json();
   
-async function hash(text){
-  const data = new TextEncoder().encode(text);
-  const hb = await crypto.subtle.digest('SHA-256',data);
-  const ha = Array.from(new Uint8Array(hb));
-  const hash = ha.map(b => b.toString(16).padStart(2,'0')).join('');  
-  return hash;
+  // GAS側から返ってきた data 配列を返す
+  return dataRes.info?.data;
 }
 
-export {POST,GET};
+async function hash(text) {
+  const data = new TextEncoder().encode(text);
+  const hb = await crypto.subtle.digest('SHA-256', data);
+  const ha = Array.from(new Uint8Array(hb));
+  return ha.map(b => b.toString(16).padStart(2, '0')).join('');
+}
