@@ -1,4 +1,4 @@
-const GAS = 'https://script.google.com/macros/s/AKfycbwMJC0qU3KyT3KtBtFIlkM5WZtIHGCoi0qcm8NWiXaqZ5BXBD3-Nwd4a7Il86TWzRDsug/exec';
+const GAS = 'https://script.google.com/macros/s/AKfycbzTi-LQRy7tvZiojm_pE1xo9JIHka7-kcyVUe3W9CY-J3ZKJFStYoYG5Ogk16hYT9kzYg/exec';
 async function POST0(t,username,password){
   const u = await hash(username);
   const p = await hash(password);
@@ -17,6 +17,44 @@ async function POST0(t,username,password){
   return JSON.parse(res);
 }
 
+async function GET0(t,username,password){
+  const u = await hash(username);
+  const p = await hash(password);
+  let payload = {
+    type: 'login',
+    info:{
+      username:u,
+      password:p
+    }
+  }
+  let r = await fetch(GAS,{
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+  let res = await r.text();
+  if(!res.ok){
+    window.alert('パスワードが確認できませんでした。');
+    location.href = '../index.html';
+  }
+  payload = {
+    type: 'getData',
+    info:{
+      username:u
+    }
+  }
+  r = await fetch(GAS,{
+    method: 'GET',
+    body: JSON.stringify(payload)
+  });
+  res = await r.text();
+  const arr = res.split(':');
+  const data = [];
+  arr.forEach((e)=>{
+    data.push(e.split(','));
+  });
+  window.alert(data);
+}
+  
 async function hash(text){
   const data = new TextEncoder().encode(text);
   const hb = await crypto.subtle.digest('SHA-256',data);
