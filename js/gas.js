@@ -17,7 +17,7 @@ async function POST0(t,username,password){
   return JSON.parse(res);
 }
 
-async function GET0(t,username,password){
+async function GET(t,username,password){
   const u = await hash(username);
   const p = await hash(password);
   let payload = {
@@ -63,4 +63,4 @@ async function hash(text){
   return hash;
 }
 
-export {POST0};
+export {POST0,GET};
