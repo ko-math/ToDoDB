@@ -1,5 +1,5 @@
 const GAS = 'https://script.google.com/macros/s/AKfycbx_WYDVqskZisFwyjyEMpv8gGz1VfWlrOh2wQOCLO4N1geJgZNie7qZBx5sUml0MyOKBg/exec';
-async function POST0(t,username,password){
+async function POST(t,username,password){
   const u = await hash(username);
   const p = await hash(password);
   const payload = {
@@ -13,8 +13,7 @@ async function POST0(t,username,password){
     method: 'POST',
     body: JSON.stringify(payload)
   });
-  const res = await r.text();
-  return JSON.parse(res);
+  return JSON.parse(r);
 }
 
 async function GET(t,username,password){
@@ -31,8 +30,7 @@ async function GET(t,username,password){
     method: 'POST',
     body: JSON.stringify(payload)
   });
-  let res = await r.text();
-  if(!res.ok){
+  if(!r.ok){
     window.alert('パスワードが確認できませんでした。');
     location.href = '../index.html';
   }
@@ -46,8 +44,7 @@ async function GET(t,username,password){
     method: 'GET',
     body: JSON.stringify(payload)
   });
-  res = await r.text();
-  const arr = res.split(':');
+  const arr = r.split(':');
   const data = [];
   arr.forEach((e)=>{
     data.push(e.split(','));
@@ -63,4 +60,4 @@ async function hash(text){
   return hash;
 }
 
-export {POST0,GET};
+export {POST,GET};
