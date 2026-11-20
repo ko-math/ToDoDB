@@ -41,7 +41,7 @@ b.addEventListener('click',async ()=>{
   console.log(res);
 });
 
-const c = $d.querySelector('input[name="type_login"]').forEach((r)=>{
+const c = $d.querySelectorAll('input[name="type_login"]').forEach((r)=>{
   r.addEventListener('change',(e)=>{
     type = e.target.value;
   });
