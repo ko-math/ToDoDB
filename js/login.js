@@ -1,4 +1,4 @@
-import {POST0} from './gas.js';
+import * as gasLib from './gas.js';
 const $d = document;
 let type = 'login';
 export let LOGIN_RESPONCE = 'INIT';
@@ -37,7 +37,7 @@ const b = $d.querySelector('#form_submit');
 b.addEventListener('click',async ()=>{
   const u = $d.querySelector('#form_username');
   const p = $d.querySelector('#form_password');
-  LOGIN_RESPONCE = await POST0(type,u.value,p.value);
+  LOGIN_RESPONCE = await gasLib.POST0(type,u.value,p.value);
 });
 
 const c = $d.querySelectorAll('input[name="type_login"]').forEach((r)=>{
